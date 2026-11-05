@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English with Dharis · Português com Dharis — Personalized language lessons</title>
+<meta name="description" content="Personalized, communicative English and Brazilian Portuguese lessons built around your own destinations. Aulas personalizadas de inglês e português, construídas a partir dos seus objetivos.">
+<meta name="theme-color" content="#13254b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f5eddb; --paper-2:#ede2c8; --card:#fbf6ea;
+  --ink:#221f1a; --muted:#5a5243; --line:#d6c7a3;
+  --navy:#13254b; --navy-2:#0c1a38; --gold:#d8b25a;
+  --green:#0c4a36; --green-2:#07331f; --yellow:#f3c623;
+  --display:'Fraunces', Georgia, serif;
+  --body:'DM Sans', system-ui, -apple-system, Segoe UI, sans-serif;
+  --mono:'Space Mono', ui-monospace, Menlo, monospace;
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .27 0 0 0 0 .14 0 0 0 .10 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* per-passport theme (overridden below) */
+  --cover:var(--navy); --cover-2:var(--navy-2); --accent:var(--gold); --accent-text:var(--navy);
+}
+.theme-pt{ --cover:var(--green); --cover-2:var(--green-2); --accent:var(--yellow); --accent-text:var(--green); }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--paper) var(--noise); color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+h1,h2,h3{font-family:var(--display); line-height:1.12; margin:0; font-weight:700; letter-spacing:-.01em}
+p{margin:0}
+a{color:var(--accent-text)}
+img{max-width:100%; display:block}
+button{font:inherit; color:inherit}
+:focus-visible{outline:3px solid #1d4ed8; outline-offset:3px; border-radius:6px}
+.wrap{width:100%; max-width:1080px; margin:0 auto; padding:0 16px}
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+
+/* ============ HERO ============ */
+.hero{position:relative; padding:40px 0 72px; text-align:center; overflow:hidden}
+.route{position:absolute; inset:0; width:100%; height:100%; pointer-events:none; opacity:.55}
+.route path{fill:none; stroke:var(--muted); stroke-width:2; stroke-dasharray:2 10; stroke-linecap:round; animation:march 30s linear infinite}
+@keyframes march{to{stroke-dashoffset:-600}}
+.hero .kicker{font-family:var(--mono); font-weight:700; letter-spacing:.32em; font-size:13px; color:var(--ink); display:inline-flex; align-items:center; gap:10px; padding:8px 16px; border:1.5px dashed var(--ink); border-radius:999px; background:var(--card)}
+.hero .plane{font-size:40px; margin:20px auto 8px; width:max-content; animation:fly 5s ease-in-out infinite}
+@keyframes fly{0%,100%{transform:translate(-6px,2px) rotate(-4deg)}50%{transform:translate(6px,-6px) rotate(4deg)}}
+.hero h1{font-size:clamp(30px,6vw,56px); font-weight:900; max-width:16ch; margin:0 auto}
+.hero h1 .sep{color:#b45309}
+.hero .lead{margin-top:14px; color:var(--muted); font-size:17px}
+
+.covers{position:relative; display:flex; flex-direction:column; align-items:center; gap:40px; margin-top:40px}
+@media (min-width:720px){ .covers{flex-direction:row; justify-content:center; gap:64px} }
+
+.passport{position:relative; display:grid; width:min(290px,78vw); aspect-ratio:5/7; border:0; padding:0; background:none; cursor:pointer; perspective:1400px; text-align:center}
+.passport .inner{position:absolute; inset:0; border-radius:6px 14px 14px 6px; background:var(--card) var(--noise); box-shadow:0 18px 40px -18px rgba(40,30,10,.55); overflow:hidden; display:flex; align-items:center; justify-content:center}
+.passport .inner::before{content:""; position:absolute; inset:0; background-image:var(--g-waves); opacity:.9}
+.passport .inner .mini-stamp{position:relative; width:46%; transform:rotate(-12deg); color:#b91c1c; opacity:.8}
+.passport .cover{position:relative; grid-area:1/1; border-radius:6px 14px 14px 6px; transform-origin:left center; transition:transform .75s cubic-bezier(.2,.75,.2,1), box-shadow .4s; backface-visibility:hidden;
+  background:var(--g-rosette) center 42%/86% no-repeat, linear-gradient(160deg,var(--c1),var(--c2));
+  box-shadow:0 22px 44px -16px rgba(10,15,30,.65), inset 0 0 0 1px rgba(255,255,255,.06);
+  color:var(--cc); display:flex; flex-direction:column; align-items:center; padding:28px 24px 26px}
+.passport .cover::before{content:""; position:absolute; inset:12px; border:1px solid var(--cc); opacity:.55; border-radius:3px 9px 9px 3px; pointer-events:none}
+.passport .cover::after{content:""; position:absolute; top:0; bottom:0; left:0; width:18px; border-radius:6px 0 0 6px; background:linear-gradient(90deg,rgba(0,0,0,.35),rgba(255,255,255,.06) 60%,transparent)}
+.passport[data-lang="en"] .cover{--c1:#1a3166; --c2:var(--navy-2); --cc:var(--gold)}
+.passport[data-lang="pt"] .cover{--c1:#11603f; --c2:var(--green-2); --cc:var(--yellow)}
+.passport:hover .cover, .passport:focus-visible .cover{transform:rotateY(-24deg); box-shadow:18px 26px 48px -18px rgba(10,15,30,.6)}
+.passport.is-opening .cover{transform:rotateY(-168deg)}
+.passport:focus-visible{outline:none}
+.passport:focus-visible .cover{outline:3px solid #fff; outline-offset:4px}
+.cover-top{font-family:var(--mono); font-weight:700; letter-spacing:.38em; font-size:13px}
+.cover .emblem{width:34%; flex:none; margin:16px 0 12px}
+.cover .flag{display:block; flex:none; width:54px; height:36px; border-radius:4px; overflow:hidden; box-shadow:0 0 0 2px var(--cc)}
+.cover .flag svg{display:block; width:100%; height:100%}
+.cover .emblem, .cover .chip{display:block}
+#introTitle:focus{outline:none}
+.cover-name{font-family:var(--display); font-weight:900; font-size:28px; line-height:1.1; letter-spacing:.06em; margin-top:12px}
+.cover-kicker{font-weight:700; font-size:14px; margin-top:4px; color:#fff}
+.cover-sub{font-size:12.5px; line-height:1.4; margin-top:6px; color:rgba(255,255,255,.88); max-width:24ch}
+.cover .chip{margin-top:auto; padding-top:10px; width:30px; flex:none; opacity:.85}
+.passport .open-hint{position:absolute; left:0; right:0; bottom:-34px; font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+
+/* ============ JOURNEY ============ */
+.topbar{position:sticky; top:0; z-index:10; background:var(--cover); color:#fff; border-bottom:3px solid var(--accent)}
+.topbar .wrap{display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:56px}
+.topbar .brand{min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-family:var(--display); font-weight:700; font-size:clamp(15px,4vw,18px); display:flex; align-items:center; gap:8px}
+.topbar .switch{white-space:nowrap; flex:none; color:#fff; font-size:14px; text-decoration:none; display:inline-flex; align-items:center; gap:6px; padding:8px 12px; border:1px solid rgba(255,255,255,.4); border-radius:999px; min-height:40px}
+.topbar .switch:hover{background:rgba(255,255,255,.12)}
+
+.section{padding:56px 0}
+.page{position:relative; background:var(--card) var(--noise); border:1px solid var(--line); border-radius:18px; padding:clamp(24px,5vw,56px); box-shadow:0 1px 0 #fff inset, 0 24px 50px -32px rgba(60,40,10,.45); overflow:hidden}
+.page::before{content:""; position:absolute; inset:0; background-image:var(--g-waves); opacity:.55; pointer-events:none}
+.page > *{position:relative}
+.page-head{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; font-family:var(--mono); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); border-bottom:1px dashed var(--line); padding-bottom:14px; margin-bottom:28px}
+
+.intro h2{font-size:clamp(30px,5vw,50px); max-width:20ch; color:var(--accent-text)}
+.intro .body{margin-top:22px; display:grid; gap:14px; max-width:62ch; font-size:18px}
+.highlight{margin-top:30px; display:inline-flex; align-items:center; gap:14px; padding:14px 22px; background:var(--cover); color:#fff; border-radius:12px; font-family:var(--display); font-style:italic; font-weight:500; font-size:clamp(18px,2.6vw,23px); line-height:1.3; position:relative; box-shadow:0 0 0 2px var(--accent) inset}
+.highlight .ico{flex:none; width:38px; height:38px; border-radius:50%; background:var(--accent); color:var(--cover); display:grid; place-items:center; font-style:normal; font-size:18px}
+.intro .big-stamp{position:absolute; right:clamp(-30px,-2vw,0px); top:40px; width:150px; color:var(--accent-text); opacity:.18; transform:rotate(14deg); pointer-events:none}
+@media (max-width:720px){ .intro .big-stamp{display:none} }
+
+/* stamps */
+.stamps-head{display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between; gap:16px; margin-bottom:22px}
+.stamps-head h2{font-size:clamp(28px,4.5vw,42px); margin-top:6px}
+
+.track{display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding:0 16px; padding:28px 16px 36px; margin:0 -16px; scrollbar-width:none; position:relative; overscroll-behavior-x:contain}
+.track::-webkit-scrollbar{display:none}
+.track:focus-visible{outline-offset:-3px}
+.stamp-card{flex:0 0 min(80vw,320px); scroll-snap-align:center; background:var(--card) var(--noise); border:1px solid var(--line); border-radius:16px; padding:22px 22px 26px; display:flex; flex-direction:column; align-items:center; text-align:center; position:relative; transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s; box-shadow:0 14px 30px -24px rgba(60,40,10,.6);
+  background-image:var(--noise), repeating-linear-gradient(180deg,transparent 0 31px, rgba(150,120,60,.10) 31px 32px)}
+.stamp-card::before{content:""; position:absolute; left:50%; top:-1px; transform:translateX(-50%); width:56px; height:10px; border-radius:0 0 10px 10px; background:var(--paper); border:1px solid var(--line); border-top:0}
+.stamp-card:hover{transform:translateY(-8px) rotate(-.4deg); box-shadow:0 26px 40px -24px rgba(60,40,10,.7)}
+.stamp-card .cat{font-family:var(--mono); font-size:12px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--stamp)}
+.seal{position:relative; width:168px; height:168px; margin:14px 0 16px; color:var(--stamp); transform:rotate(var(--rot)); opacity:0}
+.seal svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
+.seal .emoji{position:absolute; inset:0; display:grid; place-items:center; font-size:50px; line-height:1; filter:saturate(.85) contrast(1.05); mix-blend-mode:multiply}
+.stamp-card.is-in .seal{animation:thunk .6s cubic-bezier(.3,1.4,.5,1) forwards}
+@keyframes thunk{
+  0%{opacity:0; transform:scale(1.8) rotate(calc(var(--rot) - 20deg))}
+  55%{opacity:1; transform:scale(.9) rotate(var(--rot))}
+  78%{transform:scale(1.05) rotate(var(--rot))}
+  100%{opacity:1; transform:scale(1) rotate(var(--rot))}
+}
+.stamp-card h3{font-size:24px}
+.stamp-card .desc{margin-top:10px; font-size:15.5px; line-height:1.55; color:#3d372c}
+.stamp-card .tr{color:var(--muted); font-style:italic}
+.stamp-card .tr-title{font-family:var(--display); font-size:15px; margin-top:4px}
+.tr-badge{font-style:normal; font-family:var(--mono); font-size:10px; letter-spacing:.12em; padding:1px 6px; border-radius:4px; background:var(--ink); color:var(--card); margin-right:6px; vertical-align:2px}
+
+.carousel-nav{display:flex; align-items:center; justify-content:center; gap:16px}
+.arrow{width:52px; height:52px; border-radius:50%; border:2px solid var(--ink); background:var(--card); cursor:pointer; display:grid; place-items:center; transition:transform .15s, background .15s}
+.arrow:hover:not(:disabled){background:var(--cover); color:#fff; border-color:var(--cover); transform:translateY(-2px)}
+.arrow:disabled{opacity:.35; cursor:default}
+.arrow svg{width:22px; height:22px}
+.counter{font-family:var(--mono); font-size:14px; letter-spacing:.08em; min-width:13ch; text-align:center}
+
+/* guide / identity page */
+.idpage{padding:0}
+.idpage .id-head{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:16px clamp(20px,4vw,36px); background:var(--cover); color:var(--accent); font-family:var(--mono); font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase}
+.id-body{display:grid; grid-template-columns:1fr; gap:24px; padding:clamp(22px,4vw,40px)}
+@media (min-width:640px){ .id-body{grid-template-columns:minmax(180px,240px) 1fr; gap:40px} }
+.photo{margin:0; position:relative; align-self:start; max-width:240px}
+.photo .frame{aspect-ratio:4/5; border-radius:10px; overflow:hidden; background:#d9ccb0; border:1px solid var(--line); position:relative}
+.photo img{width:100%; height:100%; object-fit:cover; filter:sepia(.12) contrast(1.02)}
+.photo .ph{position:absolute; inset:0; display:none; place-items:center; text-align:center; color:var(--muted); font-family:var(--mono); font-size:12px}
+.photo .ph b{display:block; font-family:var(--display); font-size:64px; color:var(--accent-text)}
+.photo.no-photo img{display:none}
+.photo.no-photo .ph{display:grid}
+.photo .over-stamp{position:absolute; right:-28px; bottom:-22px; width:96px; color:#b91c1c; transform:rotate(-14deg); opacity:.85}
+.fields{margin:0; display:grid; gap:16px}
+.fields div{border-bottom:1px dashed var(--line); padding-bottom:10px}
+.fields dt{font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+.fields dd{margin:2px 0 0; font-family:var(--display); font-size:22px; font-weight:500}
+.mrz{background:#efe6cf; border-top:1px solid var(--line); padding:14px clamp(16px,4vw,36px); font-family:var(--mono); font-size:clamp(9px,2.2vw,15px); letter-spacing:.12em; color:#4a4335; line-height:1.6; white-space:nowrap; overflow:hidden}
+.audio{margin-top:22px; display:flex; flex-wrap:wrap; align-items:center; gap:14px}
+.play{display:inline-flex; align-items:center; gap:12px; min-height:52px; padding:8px 22px 8px 8px; border:0; border-radius:999px; background:var(--cover); color:#fff; cursor:pointer; font-weight:700; font-size:16px; box-shadow:0 10px 20px -12px rgba(0,0,0,.6); transition:transform .15s}
+.play:hover{transform:translateY(-2px)}
+.play .disc{width:38px; height:38px; border-radius:50%; background:var(--accent); color:var(--cover); display:grid; place-items:center}
+.play .disc svg{width:16px; height:16px}
+.audio .time{font-family:var(--mono); font-size:13px; color:var(--muted)}
+.audio .wave{display:flex; gap:3px; align-items:center; height:24px}
+.audio .wave i{width:3px; height:30%; background:var(--accent-text); border-radius:2px; opacity:.5}
+.playing .wave i{animation:eq .9s ease-in-out infinite}
+.playing .wave i:nth-child(2n){animation-delay:-.3s}.playing .wave i:nth-child(3n){animation-delay:-.6s}
+@keyframes eq{0%,100%{height:25%}50%{height:100%}}
+.linkbtn{background:none; border:0; padding:10px 4px; cursor:pointer; text-decoration:underline; text-underline-offset:4px; font-weight:500; color:var(--accent-text); min-height:44px}
+.transcript{margin-top:14px; padding:20px 22px; background:var(--card); border:1px solid var(--line); border-left-width:1px; border-radius:12px; display:grid; gap:12px; max-width:70ch}
+.audio-msg{font-size:14px; color:#9a3412}
+
+/* CTA boarding pass */
+.boarding{display:grid; grid-template-columns:1fr; border-radius:20px; overflow:hidden; box-shadow:0 30px 60px -36px rgba(20,20,40,.7); position:relative}
+@media (min-width:760px){ .boarding{grid-template-columns:1fr 300px} }
+.bp-main{background:var(--cover); color:#fff; padding:clamp(26px,5vw,52px); position:relative; background-image:var(--g-rosette-light); background-repeat:no-repeat; background-position:120% 50%; background-size:420px}
+.bp-main .eyebrow{color:var(--accent)}
+.bp-main h2{font-size:clamp(30px,5vw,48px); margin-top:10px; max-width:16ch}
+.bp-main p.lead{margin-top:14px; font-size:18px; color:rgba(255,255,255,.9); max-width:40ch}
+.bp-route{margin-top:28px; display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.bp-route small{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent)}
+.bp-route strong{font-family:var(--display); font-size:20px; font-weight:500}
+.bp-route .dots{flex:1; min-width:60px; height:2px; background:repeating-linear-gradient(90deg,var(--accent) 0 4px,transparent 4px 10px); position:relative}
+.bp-route .dots span{position:absolute; left:50%; top:50%; transform:translate(-50%,-55%); font-size:18px}
+.bp-stub{background:var(--card) var(--noise); padding:28px 26px; display:flex; flex-direction:column; justify-content:center; gap:20px; position:relative; border-top:2px dashed var(--line)}
+@media (min-width:760px){ .bp-stub{border-top:0; border-left:2px dashed #b9a87f} }
+.bp-stub::before,.bp-stub::after{content:""; position:absolute; width:28px; height:28px; border-radius:50%; background:var(--paper)}
+.bp-stub::before{left:-14px; top:-14px}.bp-stub::after{right:-14px; top:-14px}
+@media (min-width:760px){ .bp-stub::before{left:-15px; top:-14px}.bp-stub::after{left:-15px; right:auto; top:auto; bottom:-14px} }
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:56px; padding:14px 22px; border-radius:14px; background:var(--accent); color:var(--cover-2); font-weight:700; font-size:17px; text-decoration:none; text-align:center; box-shadow:0 4px 0 var(--cover-2); transition:transform .15s, box-shadow .15s}
+.btn:hover{transform:translateY(-2px); box-shadow:0 6px 0 var(--cover-2)}
+.btn:active{transform:translateY(2px); box-shadow:0 2px 0 var(--cover-2)}
+.bp-stub{gap:14px}
+.ticket{position:relative; display:flex; align-items:stretch; min-height:58px; border-radius:10px; text-decoration:none; font-weight:700; font-size:16px; transition:transform .15s;
+  -webkit-mask:radial-gradient(circle 9px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat, radial-gradient(circle 9px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;
+          mask:radial-gradient(circle 9px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat, radial-gradient(circle 9px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat}
+.ticket:hover{transform:translateY(-3px) rotate(-.6deg)}
+.ticket:focus-visible{outline:none; box-shadow:inset 0 0 0 3px #1d4ed8}
+.ticket .t-ico{flex:none; width:56px; display:grid; place-items:center; border-right:2px dashed currentColor; margin:8px 0; padding-left:8px}
+.ticket .t-ico svg{width:22px; height:22px}
+.ticket .t-txt{flex:1; display:flex; align-items:center; padding:10px 20px 10px 14px; line-height:1.25}
+.ticket-main{background:var(--accent); color:var(--cover-2)}
+.ticket-alt{background:var(--cover); color:#fff}
+.ticket-alt .t-ico{color:var(--accent)}
+.email-text{font-size:14px; color:var(--muted); display:grid; gap:2px}
+.email-text .addr{font-family:var(--mono); font-size:15px; color:var(--ink); user-select:all; -webkit-user-select:all; word-break:break-all; cursor:text}
+.barcode{height:56px; background:repeating-linear-gradient(90deg,#221f1a 0 2px,transparent 2px 4px,#221f1a 4px 7px,transparent 7px 9px,#221f1a 9px 10px,transparent 10px 14px); opacity:.85; border-radius:2px}
+.stub-meta{display:flex; justify-content:space-between; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+
+footer{padding:40px 0 56px; text-align:center; color:var(--muted); font-size:15px}
+footer .f-brand{font-family:var(--display); font-size:20px; color:var(--ink)}
+footer a{display:inline-flex; align-items:center; gap:8px; margin-top:10px; color:var(--ink); padding:8px 6px; min-height:44px}
+footer svg{width:20px; height:20px}
+
+[hidden]{display:none !important}
+.fade-in{animation:fadeUp .6s ease both}
+@keyframes fadeUp{from{opacity:0; transform:translateY(16px)}to{opacity:1; transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important; transition:none !important}
+  .seal{opacity:1}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- Shared SVG filter: inked / textured stamp look -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="ink" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="4" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency=".28" numOctaves="3" seed="11" result="n2"/>
+    <feColorMatrix in="n2" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.9 1.75" result="m"/>
+    <feComposite in="d" in2="m" operator="in"/>
+  </filter>
+</svg>
+
+<!-- ============ HERO / PASSPORT COVERS ============ -->
+<header class="hero" id="hero">
+  <svg class="route" viewBox="0 0 1200 700" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M-40 520 C 180 380, 300 640, 520 470 S 860 160, 1000 300 S 1180 420, 1260 180"/>
+    <path d="M-40 140 C 200 60, 420 260, 640 150 S 1000 40, 1260 120" style="opacity:.6"/>
+  </svg>
+  <div class="wrap">
+    <p class="kicker" id="heroKicker"></p>
+    <div class="plane" aria-hidden="true">✈️</div>
+    <h1 id="heroTitle"></h1>
+    <p class="lead" id="heroLead"></p>
+    <div class="covers" id="covers"></div>
+  </div>
+</header>
+
+<!-- ============ ONE PASSPORT'S JOURNEY (filled by script) ============ -->
+<div id="journey" hidden></div>
+
+<footer>
+  <div class="wrap">
+    <p class="f-brand" id="footerBrand"></p>
+    <a id="instaLink" href="#" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      <span id="instaLabel"></span>
+    </a>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   ✏️  EDIT TEXTS HERE
+   ---------------------------------------------------------------------
+   Every word on the site lives in this object. Change the text between
+   the quotes and save — the layout updates on its own.
+   Links: CONTACT_URL and INSTAGRAM_URL. Files: dharis.jpg,
+   audio-en.mp3, audio-pt.mp3 (keep them in the same folder as this file).
+   ===================================================================== */
+const TEXTS = {
+  BOOKING_LINK:  "BOOKING_LINK",  // ← Google Calendar booking page (opens in a new tab)
+  EMAIL_ADDRESS: "EMAIL_ADDRESS", // ← Dharis's email (used by the email button and shown as text)
+  INSTAGRAM_URL: "#instagram",    // ← Instagram profile link
+  PHOTO_FILE:    "dharis.jpg",
+
+  hero: {
+    kicker: "PASSPORT · PASSAPORTE",
+    title:  "English with Dharis · Português com Dharis",
+    lead:   "Choose your passport · Escolha seu passaporte"
+  },
+
+  footer: {
+    brand: "English with Dharis · Português com Dharis",
+    instagram: "Instagram"
+  },
+
+  /* =====================================================================
+     ENGLISH PASSPORT — for Brazilians.
+     The whole page is in PORTUGUESE (the visitor's language).
+     Stamp category + title stay in English (the destination's name),
+     with a Portuguese "subtitle" under it.
+     ===================================================================== */
+  en: {
+    cover: {
+      top: "PASSPORT",
+      name: "ENGLISH",
+      kicker: "For Portuguese speakers",
+      sub: "Para brasileiros que falam português e querem aprender inglês.",
+      hint: "Tap to open · Toque para abrir"
+    },
+    brand: "English with Dharis",
+    switchLabel: "Trocar passaporte",
+    pageHead: ["Passaporte · Inglês", "Titular · Você"],
+
+    intro: {
+      title: "Cada jornada é diferente. E cada experiência de aprendizagem também.",
+      body: [
+        "Estes carimbos representam todas as possibilidades que podemos explorar durante as suas aulas. Eles não são etapas obrigatórias, níveis ou um roteiro que você precisa seguir.",
+        "Você escolhe os assuntos que despertam seu interesse, suas necessidades e sua curiosidade. As aulas serão construídas de acordo com seus objetivos, seu ritmo e sua própria jornada."
+      ],
+      highlight: "Você escolhe os destinos. Construímos a jornada juntos."
+    },
+
+    stamps: {
+      eyebrow: "Destinos",
+      heading: "Escolha seus carimbos",
+      counterWord: "Carimbo",
+      prev: "Carimbo anterior",
+      next: "Próximo carimbo",
+      regionLabel: "Carimbos — deslize ou use as setas do teclado",
+      subtitleBadge: "PT",
+      items: [
+        { cat: "Basics",        emoji: "🧳", title: "First Steps",               subtitle: "Primeiros Passos",          desc: "Primeiros contatos com o inglês, apresentações, expressões básicas e comunicação para iniciantes." },
+        { cat: "Grammar",       emoji: "🧩", title: "Grammar Without the Drama", subtitle: "Gramática sem Drama",       desc: "Gramática aplicada à comunicação, sem regras soltas e sem complicação desnecessária." },
+        { cat: "Pronunciation", emoji: "🎙️", title: "Sound Like You",            subtitle: "Com a Sua Voz",             desc: "Pronúncia, sons, ritmo, entonação e desenvolvimento de uma fala mais natural." },
+        { cat: "Vocabulary",    emoji: "📚", title: "Words for Real Life",       subtitle: "Palavras para a Vida Real", desc: "Vocabulário útil para situações cotidianas, interesses pessoais e diferentes contextos." },
+        { cat: "Speaking",      emoji: "💬", title: "Let's Have a Conversation", subtitle: "Vamos Conversar",           desc: "Conversação, construção de frases, troca de ideias e desenvolvimento da espontaneidade." },
+        { cat: "Travel",        emoji: "✈️", title: "Around the World",          subtitle: "Pelo Mundo",                desc: "Inglês para viagens: aeroportos, hotéis, restaurantes, passeios e situações que exigem autonomia." },
+        { cat: "Career",        emoji: "💼", title: "English at Work",           subtitle: "Inglês no Trabalho",        desc: "Inglês profissional, entrevistas, reuniões, comunicação com colegas e oportunidades internacionais." },
+        { cat: "Listening",     emoji: "🎧", title: "Listen Up!",                subtitle: "Ouvidos Atentos!",          desc: "Compreensão oral por meio de conversas, vídeos, músicas, diferentes sotaques e situações reais." },
+        { cat: "Culture",       emoji: "🌍", title: "Culture Matters",           subtitle: "A Cultura Importa",         desc: "Cultura, expressões idiomáticas, referências culturais e diferenças entre formas de se comunicar." },
+        { cat: "Social",        emoji: "🤝", title: "Social Connections",        subtitle: "Conexões Sociais",          desc: "Amizades, relacionamentos, encontros, conversas informais e conexões com outras pessoas." },
+        { cat: "Arts",          emoji: "🎨", title: "Creative Minds",            subtitle: "Mentes Criativas",          desc: "Arte, música, filmes, livros, criatividade, opiniões e expressão pessoal." },
+        { cat: "Fluency",       emoji: "🚀", title: "Speak with Confidence",     subtitle: "Fale com Confiança",        desc: "Desenvolvimento da confiança, autonomia, fluência e capacidade de se expressar sem medo de errar." }
+      ]
+    },
+
+    guide: {
+      eyebrow: "Sua guia de viagem",
+      docHead: ["Passaporte", "Tipo · P", "Guia · Dharis"],
+      photoAlt: "Retrato da Dharis, professora de idiomas",
+      fields: [
+        ["Nome", "Dharis"],
+        ["Profissão", "Professora de idiomas"],
+        ["Ensina", "Inglês e português"],
+        ["Aulas", "Particulares, online"],
+        ["Alunos", "Brasileiros e o mundo"]
+      ],
+      audioFile: "audio-en.mp3",
+      audioButton: "Toque para ouvir a Dharis (40 s)",
+      audioPause: "Pausar",
+      audioError: "Áudio em breve.",
+      transcriptShow: "Ler o texto completo",
+      transcriptHide: "Esconder o texto",
+      transcript: [
+        "[Texto provisório — cole aqui a transcrição completa da mensagem de 40 segundos da Dharis.]"
+      ]
+    },
+
+    cta: {
+      eyebrow: "Cartão de embarque",
+      title: "Pronto para começar sua jornada?",
+      text: "Vamos descobrir quais destinos fazem sentido para você!",
+      bookButton: "Agende sua primeira aula",
+      emailButton: "Me envie um e-mail",
+      emailSubject: "Aulas de inglês com a Dharis",
+      emailLabel: "Ou copie o e-mail:",
+      newTab: "(abre em nova aba)",
+      fromLabel: "De",   from: "Onde você está",
+      toLabel: "Para",   to: "Seus destinos",
+      stub: ["Portão · Online", "Assento · Seu"]
+    }
+  },
+
+  /* =====================================================================
+     PORTUGUÊS PASSPORT — for English speakers.
+     The whole page is in ENGLISH (the visitor's language).
+     Stamp category + title stay in Portuguese (the destination's name),
+     with an English "subtitle" under it.
+     ===================================================================== */
+  pt: {
+    cover: {
+      top: "PASSAPORTE",
+      name: "PORTUGUÊS",
+      kicker: "For English speakers",
+      sub: "For English speakers who want to learn Brazilian Portuguese.",
+      hint: "Tap to open · Toque para abrir"
+    },
+    brand: "Português com Dharis",
+    switchLabel: "Switch passport",
+    pageHead: ["Passport · Portuguese", "Holder · You"],
+
+    intro: {
+      title: "Every journey is different. So is every learning experience.",
+      body: [
+        "These stamps represent all the possibilities your lessons can explore. They're not steps to follow or levels you need to complete.",
+        "Choose what interests you, what you need, and what makes you curious. Your lessons will be built around your goals, your pace, and your own journey."
+      ],
+      highlight: "You choose the destinations. We create the journey together."
+    },
+
+    stamps: {
+      eyebrow: "Destinations",
+      heading: "Collect the stamps you want",
+      counterWord: "Stamp",
+      prev: "Previous stamp",
+      next: "Next stamp",
+      regionLabel: "Stamps — swipe or use the arrow keys",
+      subtitleBadge: "EN",
+      items: [
+        { cat: "Básico",      emoji: "👋", title: "Primeiras Palavras",        subtitle: "First Words",              desc: "First contact with Portuguese: introductions, basic expressions and communication for beginners." },
+        { cat: "Estrutura",   emoji: "🧩", title: "Gramática na Vida Real",    subtitle: "Grammar in Real Life",     desc: "Brazilian Portuguese structures applied to real communication situations." },
+        { cat: "Pronúncia",   emoji: "🗣️", title: "Fale do Seu Jeito",         subtitle: "Speak Your Way",           desc: "Pronunciation, sounds, rhythm, intonation and the features of Brazilian speech." },
+        { cat: "Vocabulário", emoji: "🦜", title: "Palavras do Brasil",        subtitle: "Words from Brazil",        desc: "Everyday vocabulary, popular expressions and words that are part of life in Brazil." },
+        { cat: "Conversação", emoji: "☕", title: "Bora Conversar!",           subtitle: "Let's Talk!",              desc: "Conversation, building sentences, exchanging ideas and developing spontaneity." },
+        { cat: "Viagem",      emoji: "🏖️", title: "Viajando pelo Brasil",      subtitle: "Traveling Around Brazil",  desc: "Portuguese for travel, restaurants, accommodation, sightseeing and everyday situations in Brazil." },
+        { cat: "Carreira",    emoji: "💼", title: "Português no Trabalho",     subtitle: "Portuguese at Work",       desc: "Professional communication, interviews, meetings and interactions in the workplace." },
+        { cat: "Escuta",      emoji: "🎶", title: "Ouvido Brasileiro",         subtitle: "A Brazilian Ear",          desc: "Listening comprehension through conversations, videos, music, different accents and real situations." },
+        { cat: "Cultura",     emoji: "🎭", title: "Muito Além das Palavras",   subtitle: "Far Beyond Words",         desc: "Brazilian culture, idiomatic expressions, customs and cultural differences." },
+        { cat: "Social",      emoji: "🤝", title: "Conexões",                  subtitle: "Connections",              desc: "Friendships, relationships, get-togethers, casual conversations and social interactions in Brazil." },
+        { cat: "Artes",       emoji: "🎨", title: "Criatividade em Português", subtitle: "Creativity in Portuguese", desc: "Art, music, films, books, creativity, opinions and personal expression." },
+        { cat: "Fluência",    emoji: "🚀", title: "Solte a Língua",            subtitle: "Loosen Your Tongue",       desc: "Building confidence, autonomy, fluency and the ability to express yourself in Portuguese." }
+      ]
+    },
+
+    guide: {
+      eyebrow: "Your guide",
+      docHead: ["Passport", "Type · P", "Guide · Dharis"],
+      photoAlt: "Portrait of Dharis, language teacher",
+      fields: [
+        ["Name", "Dharis"],
+        ["Profession", "Language teacher"],
+        ["Teaches", "English & Portuguese"],
+        ["Lessons", "Private, online"],
+        ["Students", "From all over the world"]
+      ],
+      audioFile: "audio-pt.mp3",
+      audioButton: "Tap to hear Dharis (40 s)",
+      audioPause: "Pause",
+      audioError: "Audio coming soon.",
+      transcriptShow: "Read the full text",
+      transcriptHide: "Hide the text",
+      transcript: [
+        "[Transcript placeholder — paste here the full text of Dharis's 40-second message.]"
+      ]
+    },
+
+    cta: {
+      eyebrow: "Boarding pass",
+      title: "Ready to start your journey?",
+      text: "Let's find the destinations that make sense for you!",
+      bookButton: "Book your first lesson",
+      emailButton: "Send me an email",
+      emailSubject: "Portuguese lessons with Dharis",
+      emailLabel: "Or copy the email address:",
+      newTab: "(opens in a new tab)",
+      fromLabel: "From", from: "Where you are",
+      toLabel: "To",     to: "Your destinations",
+      stub: ["Gate · Online", "Seat · Yours"]
+    }
+  }
+};
+/* ======================= END OF EDITABLE TEXTS ======================= */
+
+
+/* ---------- Layout code below — no need to touch ---------- */
+const INKS = ['#c2410c','#0f766e','#8a5a00','#6d28d9','#b91c1c','#1d4ed8','#15803d','#be185d','#9a3412','#1e3a8a','#86198f','#0e7490'];
+const ROTS = [-8, 5, -3, 9, -11, 4, -6, 10, -2, 7, -9, 3];
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $ = (s, r=document) => r.querySelector(s);
+
+/* guilloche patterns (security-paper look) */
+const svgUrl = svg => `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+function rosette(color, op){
+  let g=''; for(let i=0;i<30;i++) g+=`<ellipse cx='100' cy='100' rx='92' ry='30' transform='rotate(${i*6} 100 100)'/>`;
+  for(let i=0;i<18;i++) g+=`<circle cx='${100+22*Math.cos(i*Math.PI/9)}' cy='${100+22*Math.sin(i*Math.PI/9)}' r='40'/>`;
+  return svgUrl(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g fill='none' stroke='${color}' stroke-opacity='${op}' stroke-width='.5'>${g}</g></svg>`);
+}
+function waves(color, op){
+  let g=''; for(let j=0;j<4;j++){ const y=6+j*7; g+=`<path d='M0 ${y} Q 15 ${y-5} 30 ${y} T 60 ${y} T 90 ${y} T 120 ${y}'/>`; }
+  return svgUrl(`<svg xmlns='http://www.w3.org/2000/svg' width='120' height='28'><g fill='none' stroke='${color}' stroke-opacity='${op}' stroke-width='.6'>${g}</g></svg>`);
+}
+const rs = document.documentElement.style;
+rs.setProperty('--g-rosette', rosette('#e8c873', .38));
+rs.setProperty('--g-rosette-light', rosette('#ffffff', .16));
+rs.setProperty('--g-waves', waves('#9c7f45', .22));
+
+/* icons */
+const FLAGS = {
+  en: `<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#012169"/><path d="M0 0L60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0L60 40M60 0L0 40" stroke="#C8102E" stroke-width="3"/><path d="M30 0V40M0 20H60" stroke="#fff" stroke-width="12"/><path d="M30 0V40M0 20H60" stroke="#C8102E" stroke-width="7"/></svg>`,
+  pt: `<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#009c3b"/><path d="M30 5L55 20L30 35L5 20Z" fill="#ffdf00"/><circle cx="30" cy="20" r="8.5" fill="#002776"/><path d="M22 18.5c5-1.6 11-1 16.5 2" stroke="#fff" stroke-width="1.3" fill="none"/></svg>`
+};
+const EMBLEM = `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="50" cy="50" r="40"/><ellipse cx="50" cy="50" rx="17" ry="40"/><path d="M10 50h80M16 30h68M16 70h68"/><circle cx="50" cy="50" r="46" stroke-dasharray="2 4"/></svg>`;
+const CHIP = `<svg viewBox="0 0 40 26" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1" y="1" width="38" height="24" rx="4"/><circle cx="20" cy="13" r="5"/><path d="M1 13h14M25 13h14M20 1v7M20 18v7"/></svg>`;
+const ARROW_L = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>`;
+const ARROW_R = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>`;
+const PLAY = `<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>`;
+const PAUSE = `<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3" y="2.5" width="3.5" height="11" rx="1"/><rect x="9.5" y="2.5" width="3.5" height="11" rx="1"/></svg>`;
+
+let uid = 0;
+function sealSVG(label){
+  const id = 'arc' + (uid++);
+  let ring = ''; while (ring.length < 34) ring += label.toUpperCase() + ' ★ ';
+  return `<svg viewBox="0 0 200 200" aria-hidden="true"><g filter="url(#ink)" fill="none" stroke="currentColor">
+    <circle cx="100" cy="100" r="93" stroke-width="7" stroke-dasharray="2.2 3.6"/>
+    <circle cx="100" cy="100" r="84" stroke-width="2.5"/>
+    <circle cx="100" cy="100" r="56" stroke-width="2"/>
+    <path id="${id}" d="M100 100 m-70 0 a70 70 0 1 1 140 0 a70 70 0 1 1 -140 0" stroke="none"/>
+    <text fill="currentColor" stroke="none" font-family="Space Mono, monospace" font-weight="700" font-size="13" letter-spacing="2"><textPath href="#${id}" textLength="430" lengthAdjust="spacing">${esc(ring)}</textPath></text>
+  </g></svg>`;
+}
+
+/* ---------- HERO ---------- */
+function renderHero(){
+  $('#heroKicker').textContent = TEXTS.hero.kicker;
+  $('#heroTitle').innerHTML = esc(TEXTS.hero.title).replace(' · ', ' <span class="sep">·</span> ');
+  $('#heroLead').textContent = TEXTS.hero.lead;
+  $('#covers').innerHTML = ['en','pt'].map(l => {
+    const c = TEXTS[l].cover;
+    return `<button class="passport" data-lang="${l}" type="button" aria-label="${esc(c.name + ' — ' + c.kicker + '. ' + c.sub)}">
+      <span class="inner" aria-hidden="true"><span class="mini-stamp">${sealSVG(c.name)}</span></span>
+      <span class="cover" aria-hidden="true">
+        <span class="cover-top">${esc(c.top)}</span>
+        <span class="emblem">${EMBLEM}</span>
+        <span class="flag">${FLAGS[l]}</span>
+        <span class="cover-name">${esc(c.name)}</span>
+        <span class="cover-kicker" ${l==='en'?'':'lang="en"'}>${esc(c.kicker)}</span>
+        <span class="cover-sub" lang="${l==='en'?'pt-BR':'en'}">${esc(c.sub)}</span>
+        <span class="chip">${CHIP}</span>
+      </span>
+      <span class="open-hint" aria-hidden="true">${esc(c.hint)}</span>
+    </button>`;
+  }).join('');
+  document.querySelectorAll('.passport').forEach(b => b.addEventListener('click', () => {
+    b.classList.add('is-opening');
+    setTimeout(() => { location.hash = b.dataset.lang; }, reduceMotion ? 0 : 650);
+  }));
+  $('#footerBrand').textContent = TEXTS.footer.brand;
+  $('#instaLabel').textContent = TEXTS.footer.instagram;
+  $('#instaLink').href = TEXTS.INSTAGRAM_URL;
+}
+
+/* ---------- ONE PASSPORT ---------- */
+function renderJourney(l){
+  const T = TEXTS[l], S = T.stamps, G = T.guide, C = T.cta;
+  const isPT = l === 'pt';
+  const vis = isPT ? 'en' : 'pt-BR';   // visitor's language = page language
+  const tgt = isPT ? 'pt-BR' : 'en';   // language being learned (stamp names)
+  const mrz1 = ('P<BRADHARIS<<' + (isPT ? 'PORTUGUES<ENGLISH' : 'ENGLISH<PORTUGUES')).padEnd(44, '<');
+  const mrz2 = 'DHR2026<<0BRA<LANGUAGE<TEACHER<ONLINE'.padEnd(44, '<');
+
+  const cards = S.items.map((s, i) => `
+    <article class="stamp-card" style="--stamp:${INKS[i % INKS.length]}; --rot:${ROTS[i % ROTS.length]}deg" aria-label="${esc(s.title)}">
+      <p class="cat" lang="${tgt}">${esc(s.cat)}</p>
+      <div class="seal" aria-hidden="true">${sealSVG(s.cat)}<span class="emoji">${s.emoji}</span></div>
+      <h3 lang="${tgt}">${esc(s.title)}</h3>
+      <p class="tr tr-title" lang="${vis}"><span class="tr-badge">${esc(S.subtitleBadge)}</span>${esc(s.subtitle)}</p>
+      <p class="desc" lang="${vis}">${esc(s.desc)}</p>
+    </article>`).join('');
+
+  const j = $('#journey');
+  j.className = 'theme-' + l;
+  j.innerHTML = `
+    <nav class="topbar" aria-label="${esc(T.cover.top)}" lang="${vis}">
+      <div class="wrap">
+        <span class="brand">${FLAGS[l].replace('<svg', '<svg width="26" height="18" style="border-radius:3px"')} ${esc(T.brand)}</span>
+        <a class="switch" href="#">↺ ${esc(T.switchLabel)}</a>
+      </div>
+    </nav>
+    <main lang="${vis}">
+      <section class="section fade-in"><div class="wrap">
+        <div class="page intro">
+          <div class="page-head"><span>${esc(T.pageHead[0])}</span><span>${esc(T.pageHead[1])}</span></div>
+          <span class="big-stamp" aria-hidden="true">${sealSVG(T.cover.name)}</span>
+          <h2 id="introTitle" tabindex="-1">${esc(T.intro.title)}</h2>
+          <div class="body">${T.intro.body.map(p => `<p>${esc(p)}</p>`).join('')}</div>
+          <p class="highlight"><span class="ico" aria-hidden="true">✈</span><span>${esc(T.intro.highlight)}</span></p>
+        </div>
+      </div></section>
+
+      <section class="section" aria-labelledby="stampsTitle" style="padding-top:8px">
+        <div class="wrap">
+          <div class="stamps-head">
+            <div><p class="eyebrow">${esc(S.eyebrow)}</p><h2 id="stampsTitle">${esc(S.heading)}</h2></div>
+          </div>
+          <div class="track" id="track" tabindex="0" role="region" aria-roledescription="carousel" aria-label="${esc(S.regionLabel)}">${cards}</div>
+          <div class="carousel-nav">
+            <button class="arrow" id="prev" type="button" aria-label="${esc(S.prev)}">${ARROW_L}</button>
+            <p class="counter" id="counter" aria-live="polite"></p>
+            <button class="arrow" id="next" type="button" aria-label="${esc(S.next)}">${ARROW_R}</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="guideTitle">
+        <div class="wrap">
+          <p class="eyebrow" id="guideTitle" style="margin-bottom:14px">${esc(G.eyebrow)}</p>
+          <div class="page idpage">
+            <div class="id-head">${G.docHead.map(h => `<span>${esc(h)}</span>`).join('')}</div>
+            <div class="id-body">
+              <figure class="photo">
+                <div class="frame">
+                  <img src="${esc(TEXTS.PHOTO_FILE)}" alt="${esc(G.photoAlt)}" width="480" height="600" loading="lazy" onerror="this.closest('.photo').classList.add('no-photo')">
+                  <span class="ph" aria-hidden="true"><span><b>D</b>${esc(TEXTS.PHOTO_FILE)}</span></span>
+                </div>
+                <span class="over-stamp" aria-hidden="true">${sealSVG('Dharis')}</span>
+              </figure>
+              <dl class="fields">${G.fields.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
+            </div>
+            <div class="mrz" aria-hidden="true">${esc(mrz1)}<br>${esc(mrz2)}</div>
+          </div>
+
+          <div class="audio" id="audioBox">
+            <button class="play" id="playBtn" type="button"><span class="disc" id="playIco">${PLAY}</span><span id="playLabel">${esc(G.audioButton)}</span></button>
+            <span class="wave" aria-hidden="true">${'<i></i>'.repeat(9)}</span>
+            <span class="time" id="audioTime" aria-hidden="true"></span>
+            <button class="linkbtn" id="trBtn" type="button" aria-expanded="false" aria-controls="transcript">${esc(G.transcriptShow)}</button>
+            <audio id="audio" preload="none" src="${esc(G.audioFile)}"></audio>
+          </div>
+          <p class="audio-msg" id="audioMsg" role="status"></p>
+          <div class="transcript" id="transcript" hidden>${G.transcript.map(p => `<p>${esc(p)}</p>`).join('')}</div>
+        </div>
+      </section>
+
+      <section class="section" id="contact-section" aria-labelledby="ctaTitle">
+        <div class="wrap">
+          <div class="boarding">
+            <div class="bp-main">
+              <p class="eyebrow">${esc(C.eyebrow)}</p>
+              <h2 id="ctaTitle">${esc(C.title)}</h2>
+              <p class="lead">${esc(C.text)}</p>
+              <div class="bp-route">
+                <div><small>${esc(C.fromLabel)}</small><strong>${esc(C.from)}</strong></div>
+                <div class="dots" aria-hidden="true"><span>✈️</span></div>
+                <div><small>${esc(C.toLabel)}</small><strong>${esc(C.to)}</strong></div>
+              </div>
+            </div>
+            <div class="bp-stub">
+              <div class="stub-meta"><span>${esc(C.stub[0])}</span><span>${esc(C.stub[1])}</span></div>
+              <a class="ticket ticket-main" href="${esc(TEXTS.BOOKING_LINK)}" target="_blank" rel="noopener">
+                <span class="t-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+                <span class="t-txt">${esc(C.bookButton)}</span><span class="sr-only"> ${esc(C.newTab)}</span>
+              </a>
+              <a class="ticket ticket-alt" href="mailto:${esc(TEXTS.EMAIL_ADDRESS)}?subject=${encodeURIComponent(C.emailSubject)}">
+                <span class="t-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+                <span class="t-txt">${esc(C.emailButton)}</span>
+              </a>
+              <p class="email-text"><span>${esc(C.emailLabel)}</span><span class="addr">${esc(TEXTS.EMAIL_ADDRESS)}</span></p>
+              <div class="barcode" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>`;
+
+  setupCarousel(S);
+  setupAudio(G);
+}
+
+function setupCarousel(S){
+  const track = $('#track'), cards = [...track.children], prev = $('#prev'), next = $('#next'), counter = $('#counter');
+  let idx = 0;
+  const update = () => {
+    const mid = track.scrollLeft + track.clientWidth / 2;
+    let best = 0, bd = Infinity;
+    cards.forEach((c, i) => { const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = i; } });
+    idx = best;
+    counter.textContent = `${S.counterWord} ${idx + 1} / ${cards.length}`;
+    prev.disabled = idx === 0; next.disabled = idx === cards.length - 1;
+  };
+  const go = i => {
+    i = Math.max(0, Math.min(cards.length - 1, i));
+    const c = cards[i];
+    track.scrollTo({ left: c.offsetLeft - (track.clientWidth - c.offsetWidth) / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+  };
+  let raf; track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }, { passive: true });
+  prev.addEventListener('click', () => go(idx - 1));
+  next.addEventListener('click', () => go(idx + 1));
+  track.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(idx + 1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(idx - 1); }
+  });
+  window.addEventListener('resize', update);
+  update();
+
+  /* stamps "thunk" in when they enter view */
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { threshold: .55 });
+    cards.forEach(c => io.observe(c));
+  } else cards.forEach(c => c.classList.add('is-in'));
+}
+
+function setupAudio(G){
+  const a = $('#audio'), btn = $('#playBtn'), ico = $('#playIco'), lab = $('#playLabel'), time = $('#audioTime'), box = $('#audioBox'), msg = $('#audioMsg');
+  const fmt = s => isFinite(s) ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '0:00';
+  const setUI = playing => {
+    box.classList.toggle('playing', playing);
+    ico.innerHTML = playing ? PAUSE : PLAY;
+    lab.textContent = playing ? G.audioPause : G.audioButton;
+  };
+  btn.addEventListener('click', () => {
+    if (a.paused) { a.play().catch(() => { msg.textContent = G.audioError; setUI(false); }); }
+    else a.pause();
+  });
+  a.addEventListener('play', () => { msg.textContent = ''; setUI(true); });
+  a.addEventListener('pause', () => setUI(false));
+  a.addEventListener('ended', () => setUI(false));
+  a.addEventListener('error', () => { msg.textContent = G.audioError; setUI(false); });
+  a.addEventListener('timeupdate', () => { time.textContent = `${fmt(a.currentTime)} / ${fmt(a.duration)}`; });
+
+  const tb = $('#trBtn'), tr = $('#transcript');
+  tb.addEventListener('click', () => {
+    const open = tr.hidden;
+    tr.hidden = !open;
+    tb.setAttribute('aria-expanded', open);
+    tb.textContent = open ? G.transcriptHide : G.transcriptShow;
+  });
+}
+
+/* ---------- ROUTING: #en / #pt / covers ---------- */
+function route(){
+  const l = location.hash.replace('#', '');
+  const hero = $('#hero'), j = $('#journey');
+  document.querySelectorAll('.passport').forEach(b => b.classList.remove('is-opening'));
+  const old = $('#audio'); if (old) old.pause();
+  if (l === 'en' || l === 'pt') {
+    renderJourney(l);
+    hero.hidden = true; j.hidden = false;
+    document.documentElement.lang = l === 'pt' ? 'en' : 'pt-BR';
+    document.querySelector('meta[name="theme-color"]').content = l === 'pt' ? '#0c4a36' : '#13254b';
+    window.scrollTo(0, 0);
+    $('#introTitle').focus({ preventScroll: true });
+  } else {
+    j.hidden = true; j.innerHTML = ''; hero.hidden = false;
+    document.documentElement.lang = 'en';
+    window.scrollTo(0, 0);
+  }
+}
+
+renderHero();
+window.addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>
